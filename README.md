@@ -6,6 +6,9 @@ primeramente en separar el nombre completo en nombre y apellidos. Ejemplo:
 
 Juan Pérez Jolote -> [Juan,Pérez,Jolote]
 
+Cada que se ejecuta el comando distanciaLevenshtein(a,b) se envían las String limpias de acentos 
+y se hace comparación con todos los carácteres en minúsculas.
+
 Se trabaja sobre este array para determinar la distancia del nombre completo palabra por palabra,
 es decir, se calcula la distancia del nombre(s) y apellido(s) y la mejor se considera la distancia
 de la palabra.
