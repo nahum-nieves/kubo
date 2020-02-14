@@ -31,9 +31,7 @@ public class Fuzzy implements Serializable {
     private final String SUFFIX_JSON_SEARCH = "\"}";
     private final String EMPTY_STRING = "";
     private final String FILE_NAME = "fuzzy-search.txt";
-    private final Character ANY_CHARACTER = '*';
     private static final String BREAK_LINE = "\n";
-    private Map<Character, Integer> tablaD1;
 
     public static void main(String[] args) {
         if (args.length < 0) {
@@ -119,7 +117,6 @@ public class Fuzzy implements Serializable {
             return;
         }
         pattern = pattern.replace(SUFFIX_JSON_SEARCH, "").replace(PREFIX_JSON_SEARCH, "").toLowerCase();
-        tablaD1 = crearTablaD1(pattern);
         int indiceMejorScore = -1;
         int mejorScore= 0;
         pattern = limpiarString(pattern);
@@ -182,40 +179,6 @@ public class Fuzzy implements Serializable {
         }
         return stringLimpio.toString();
     }
-    
-    /**
-     * Tabla D1 definida en algoritmo Boyer-Moore
-    */
-    private Map<Character, Integer> crearTablaD1(String pattern) {
-        String proc = java.text.Normalizer.normalize(pattern, Normalizer.Form.NFD);
-        pattern = limpiarString(proc);
-
-        Map<Character, Integer> d1 = new HashMap<>();
-        d1.put(ANY_CHARACTER, pattern.length());
-        for (int i = pattern.length() - 1; i >= 0; i--) {
-            if (d1.get(pattern.charAt(i)) == null) {
-                d1.put(pattern.charAt(i), pattern.length()-1 - i);
-            }
-        }
-        return d1;
-    }
-  
-    /*
-     * Idealmente las cadenas que llegue son de la misma dimensión
-     * Sin embargo se valida cuál es la más corta para evitar Excepciones.
-     *
-     */
-    private int calcularDistanciaHamming(String string1, String string2) {
-        int limite = string1.length() > string2.length() ? string2.length() : string1.length();
-        int distanciaHamming = 0;
-        for (int i = 0; i < limite; i++) {
-            if(string1.charAt(i) == string2.charAt(0)){
-                distanciaHamming++;
-            }
-        }
-        return distanciaHamming;
-    }
-
     
 }
        
