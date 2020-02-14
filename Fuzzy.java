@@ -72,8 +72,8 @@ public class Fuzzy implements Serializable {
         try (BufferedWriter br = new BufferedWriter(new FileWriter(new File(FILE_NAME), true))) {
             br.write(sujeto.replace(PREFIX_JSON_NAME, EMPTY_STRING).replace(SUFFIX_JSON_NAME, EMPTY_STRING) + BREAK_LINE);
         } catch (Exception ex) {
-            System.out.println("Error al escribir el usuario. " + BREAK_LINE);
             ex.printStackTrace();
+            throw new InternalError("Error al escribir el usuario. " + BREAK_LINE);
         }
         System.out.println("Usuario agregado." + BREAK_LINE);
     }
