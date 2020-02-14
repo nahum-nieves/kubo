@@ -35,7 +35,7 @@ la historia de este es bastante interesante.
 El programa se escribió en Java por comodidad.
 
 Para compilar usar: javac Fuzzy.java
-Para ejecutar los comando usar: java Fuzzy <comando> <argumentos>
+Para ejecutar los comandos usar: java Fuzzy comando argumento
 
 *** Nota:
 Para procesar los JSON no se utilizó ninguna libreria externa por lo que la función es un tanto 
