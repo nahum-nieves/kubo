@@ -68,7 +68,7 @@ public class Fuzzy implements Serializable {
 
     public void add(String sujeto) {
         if (!sujeto.matches(REGEXP_JSON_NAME)) {
-            System.out.println("Por favor ingresa registro en formato JSON. Ingresa nombres y apellidos iniciando con mayúsculas.");
+            System.out.println("Por favor ingresa registro en formato JSON. No utilices espacios en la estructura JSON, los espacios sólo están permitidos dentro del campo name. Ingresa nombres y apellidos iniciando con mayúsculas.");
             return;
         }
         try (BufferedWriter br = new BufferedWriter(new FileWriter(new File(FILE_NAME), true))) {
@@ -115,7 +115,7 @@ public class Fuzzy implements Serializable {
     
     public void fuzzySearch(String pattern) {
         if (!pattern.matches(REGEXP_JSON_SEARCH)) {
-            System.out.println("Por favor ingresa la búsqueda en formato JSON." + BREAK_LINE);
+            System.out.println("Por favor ingresa la búsqueda en formato JSON. No utilices espacios en la estructura JSON, los espacios sólo están permitidos dentro del campo search." + BREAK_LINE);
             return;
         }
         pattern = pattern.replace(SUFFIX_JSON_SEARCH, "").replace(PREFIX_JSON_SEARCH, "").toLowerCase();
